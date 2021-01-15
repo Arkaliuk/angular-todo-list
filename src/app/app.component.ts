@@ -5,6 +5,13 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
-  title = 'angular-todo-list';
+
+  title = 'To do list';
+  todoList: any;
+  todoLists: any = [{ id: 1, name: "Study" }, { id: 2, name: "Relax" }]
+  selectTodoList(todo) {
+    this.todoList = todo;
+  }
 }

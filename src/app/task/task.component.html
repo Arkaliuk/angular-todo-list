@@ -1,0 +1,7 @@
+<ul>
+    <li *ngFor="let todo of todoList" (click)="checkedTodo(todo)" [class.checked]="isDone(todo)">
+        <h2>{{todo.title}}</h2>
+        <p>{{todo.description}}</p>
+        <p>{{todo.dueDate| date:'short'}}</p>
+    </li>
+</ul>

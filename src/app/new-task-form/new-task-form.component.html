@@ -1,0 +1,6 @@
+<form (submit)="addTodo()">
+    <input type="text" [(ngModel)]="newTitle" name="title" id="myInput" placeholder="Title">
+    <input type="text" [(ngModel)]="newDescription" name="description" id="description" placeholder="Description">
+    <input type="date" [(ngModel)]="newDate" name="dueDate" id="dueDate" placeholder="Due date">
+    <button type="submit" class="addBtn">Add</button>
+</form>

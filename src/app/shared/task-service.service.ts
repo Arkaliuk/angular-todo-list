@@ -11,7 +11,7 @@ import { TodoList } from './todo-list';
 export class TaskServiceService {
 
   apiURL = 'http://localhost:8080/todo';
-  apiURLList='http://localhost:8080/lists';
+  apiURLList = 'http://localhost:8080/lists';
 
   constructor(private http: HttpClient) { }
 

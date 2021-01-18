@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { TaskServiceService } from '../shared/task-service.service';
 
 @Component({
   selector: 'new-task-form',
@@ -7,19 +8,31 @@ import { Component, Input } from '@angular/core';
 })
 export class NewTaskFormComponent {
 
+  constructor(
+    public taskService: TaskServiceService
+  ) { }
 
   @Input() todoList: any;
+  @Output() event = new EventEmitter();
   newTitle: any;
   newDescription: any;
   newDate: any;
 
-  addTodo() {
+  onSubmit() {
+    this.event.emit(this.getValueForm());
+  }
+
+  getValueForm() {
     if (this.newTitle === '') {
       return alert("You must enter title")
     }
-    this.todoList.push({ title: this.newTitle, description: this.newDescription, done: false, dueDate: this.newDate })
+
+    let data = { title: this.newTitle, description: this.newDescription, done: false, dueDate: this.newDate }
     this.newTitle = '';
     this.newDescription = '';
     this.newDate = '';
+    return data;
+
+
   }
 }

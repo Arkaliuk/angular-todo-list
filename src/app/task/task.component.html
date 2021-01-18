@@ -3,5 +3,6 @@
         <h2>{{todo.title}}</h2>
         <p>{{todo.description}}</p>
         <p>{{todo.dueDate| date:'short'}}</p>
+        <button class="delete" (click)="deleteTask(todo.id)">X</button>
     </li>
 </ul>

@@ -1,4 +1,4 @@
 <!-- <h2>{{selectedList.id}}</h2> -->
-<new-task-form [todoList]="todoList"></new-task-form>
+<new-task-form (event)="addTodo($event)"></new-task-form>
 <h2>{{selectedList.name}}</h2>
 <task [todoList]="todoList"></task>

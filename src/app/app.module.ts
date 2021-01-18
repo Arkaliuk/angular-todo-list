@@ -7,7 +7,7 @@ import { NewTaskFormComponent } from './new-task-form/new-task-form.component';
 import { TaskComponent } from './task/task.component';
 import { TodoListSidebarComponent } from './todo-list-sidebar/todo-list-sidebar.component';
 import { TodoListTasksComponent } from './todo-list-tasks/todo-list-tasks.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { TodoListTasksComponent } from './todo-list-tasks/todo-list-tasks.compon
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

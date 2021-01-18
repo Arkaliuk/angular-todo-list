@@ -1,21 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { TaskServiceService } from '../shared/task-service.service';
 
-class Todo {
-  title: any;
-  description: any;
-  done: any;
-  dueDate: any;
-  listId: any;
-
-  constructor(title, description, done, dueDate, listId) {
-    this.title = title;
-    this.description = description;
-    this.done = done;
-    this.dueDate = dueDate;
-    this.listId = listId;
-  }
-
-}
 @Component({
   selector: 'todo-list-tasks',
   templateUrl: './todo-list-tasks.component.html',
@@ -23,12 +8,17 @@ class Todo {
 })
 
 export class TodoListTasksComponent {
+  constructor(
+    public taskService: TaskServiceService
+  ) { }
+  
   @Input() selectedList: any;
-  newList = [];
+  todoList: any;
 
-  todoList = [
-    { title: "Study", description: "Learn CSS", done: false, dueDate: new Date(), listId: { id: 1 } },
-    { title: "Relax", description: "Watch TV", done: true, dueDate: new Date(), listId: { id: 1 } },
-    { title: "Study", description: "Learn JS", done: false, dueDate: new Date(), listId: { id: 1 } }
-  ];
+  addTodo(object) {
+    this.taskService.createTask({ ...object, done: false, todoList: { id: 1 } })
+      .subscribe(data => {
+        this.taskService.getTasks().subscribe(todos => { this.todoList = todos });
+      });
+  }
 }

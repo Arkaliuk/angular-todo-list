@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TaskServiceService } from '../shared/task-service.service';
 
 @Component({
@@ -12,11 +12,10 @@ export class TaskComponent implements OnInit {
     public taskService: TaskServiceService
   ) { }
 
-  ngOnInit() {
-    this.getTasks();
-  }
+  ngOnInit() { }
 
   @Input() todoList: any;
+  @Output() deleteEvent = new EventEmitter();
 
   checkedTodo(todo) {
     todo.done = !todo.done;
@@ -33,8 +32,6 @@ export class TaskComponent implements OnInit {
   }
 
   deleteTask(id) {
-    this.taskService.deleteTask(id).subscribe(data => {
-      this.getTasks();
-    });
+    this.deleteEvent.emit(id);
   }
 }

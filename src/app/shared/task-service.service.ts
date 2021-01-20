@@ -33,8 +33,21 @@ export class TaskServiceService {
     return this.http.get<Todo>(this.apiURL)
       .pipe(
         retry(1),
-        catchError(this.handleError)
-      )
+        catchError(this.handleError))
+  }
+
+  getTasksForToday(): Observable<Todo> {
+    return this.http.get<Todo>(this.apiURL + '/collection/today')
+      .pipe(
+        retry(1),
+        catchError(this.handleError))
+  }
+
+  getTasksByListId(id): Observable<Todo> {
+    return this.http.get<Todo>(this.apiURL + '/' + id + '/tasks')
+      .pipe(
+        retry(1),
+        catchError(this.handleError))
   }
 
   createTask(todo): Observable<Todo> {

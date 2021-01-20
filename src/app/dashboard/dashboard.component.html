@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let todo of todoList" (click)="selectTodoList(todo)">
+        <a [routerLink]="['/todo-list-page', todo.id]" routerLinkActive="activebutton">{{todo.name}}</a>
+    </li>
+</ul>

@@ -1,8 +1,17 @@
+
+
 <h1>{{title}}</h1>
+<nav>
+    <a class="button" routerLink="/today-tasks-page" routerLinkActive="activebutton">Task for today</a>
+</nav>
+<div class="container">
+    <dashboard class="dashboard"></dashboard>
+    <router-outlet></router-outlet>
+</div>
 
-<todo-list-sidebar [todoList]="todoLists" (select)=
-"selectTodoList($event)"></todo-list-sidebar>
+<!-- <dashboard [todoList]="todoLists" (select)="selectTodoList($event)"></dashboard> -->
+<!-- <todo-list-sidebar [todoList]="todoLists" (select)=
+"selectTodoList($event)"></todo-list-sidebar> -->
 
-<todo-list-tasks [selectedList]="todoList"></todo-list-tasks>
-
-    
+<!-- <todo-list-tasks [selectedList]="todoList"></todo-list-tasks> -->
+<!-- <a class="button" routerLink="/todo-list-page" routerLinkActive="activebutton">Todo List Page</a> -->

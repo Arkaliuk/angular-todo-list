@@ -1,24 +1,24 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TaskServiceService } from '../shared/task-service.service';
 
 @Component({
-  selector: 'todo-list-sidebar',
-  templateUrl: './todo-list-sidebar.component.html',
-  styleUrls: ['./todo-list-sidebar.component.scss']
+  selector: 'dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class TodoListSidebarComponent implements OnInit {
+export class DashboardComponent implements OnInit {
+
   constructor(
     public taskService: TaskServiceService,
   ) { }
 
-  ngOnInit() {
-    this.getLists();
-  }
-
   @Input() todoList: any;
   selectedTodo: any;
   @Output() select = new EventEmitter();
+
+  ngOnInit() {
+    this.getLists();
+  }
 
   selectTodoList(todo) {
     this.select.emit(todo);
